@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <report
+                id="nekaba_counting_report"
+                string="counting Report"
+                name="nekaba_subscription.nekaba_counting_template"
+                model="res.partner"
+                report_type="qweb-pdf"
+                file="nekaba_subscription.nekaba_counting_template"
+                menu="False"
+        />
+    </data>
+</odoo>

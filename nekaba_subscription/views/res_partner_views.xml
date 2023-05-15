@@ -1,0 +1,126 @@
+<odoo>
+    <data>
+
+        <!--        <record id="test_members_cron" model="ir.cron">-->
+        <!--            <field name="name">check member pay</field>-->
+        <!--            <field name="model_id" ref="base.model_res_partner"/>-->
+        <!--            <field name="state">code</field>-->
+        <!--            <field name="code">model.check_pay()</field>-->
+        <!--            <field name="user_id" ref="base.user_root"/>-->
+        <!--            <field name="interval_number">1</field>-->
+        <!--            <field name="interval_type">months</field>-->
+        <!--            <field name="numbercall">-1</field>-->
+        <!--        </record>-->
+
+        <record id="res_partner_form_view" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object" name="action_payment_button"
+                            icon="fa-usd">
+                        <field string="Payment" name="payment_count" widget="statinfo"/>
+                    </button>
+                </div>
+<!--                <xpath expr="//field[@name='expiration_date']" position="replace">-->
+
+<!--                </xpath>-->
+                <xpath expr="//form//sheet" position="before">
+                    <header>
+                        <button string="حالة دفع العضو" type="object" name="create_lines"
+                                attrs="{'invisible':[('press','=',True)]}"/>
+                        <button string="حالة دفع الاستشاري" type="object" name="create_lines_consultant"
+                                attrs="{'invisible':['|',('press2','=',True),('consultant','=',False)]}"/>
+                        <!--                        <button name="check_pay" type="object" string="الدفع"-->
+                        <!--                                attrs="{'invisible':[('press3','=',True)]}"/>-->
+                    </header>
+                </xpath>
+                <xpath expr="//form//sheet//group//group" position="inside">
+                    <field name="carnet_date"/>
+                    <field name="expiration_date"/>
+<!--                    <field name="expiration_end_date"></field>-->
+                    <field name="membership_num" />
+
+<!--                    readonly="1"-->
+
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/div[2]" position="after">
+                    <field name="mobile2"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="بيانات العضو">
+                        <group col="2">
+                            <field name="college_id"/>
+                            <field name="university_id"/>
+                            <field name="degree_id"/>
+<!--                            <field name="manufacture_design"/>-->
+                            <!--                            <field name="birth_date"/>-->
+                            <field name="gender"/>
+                            <field name="nationality"/>
+                            <field name="country" attrs="{'invisible':[('nationality','=','egyptian')]}"/>
+                            <field name="member_id"/>
+                            <!--                            <field name="birthdate" readonly="1"/>-->
+                            <field name="date_of_birth"/>
+                            <field name="block_state"/>
+                            <field name="block_reason"
+                                   attrs="{'invisible':[('block_state','=','accepted')],'required':[('block_state','=','blocked')]}"/>
+                            <field name="block_reason2"
+                                   attrs="{'invisible':[('block_state','=','accepted')]}"/>
+                            <field name="consultant" attrs="{'invisible':[('consultant','=',False)]}"/>
+                            <field name="graduation_date" required="1"/>
+                            <field name="department"/>
+                            <field name="department1"/>
+                            <field name="practicing_profession_date"/>
+<!--                            <field name="practicing_profession_date_inherit"/>-->
+                            <field name="join_date"/>
+                            <field name="no_years"/>
+                            <field name="consultant_date"
+                                   attrs="{'invisible':[('consultant','=',False)],'required':[('consultant','=',True)]}"/>
+                            <field name="pension_state" attrs="{'invisible':[('nationality','=','other')]}"/>
+                            <field name="naqeeb_id"/>
+                            <field name="press" invisible="1"/>
+                            <field name="press2" invisible="1"/>
+                            <field name="press3" invisible="1"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="دفع العضو">
+                        <field name="membership_ids" widget="section_and_note_one2many" mode="tree" readonly="1">
+                            <tree editable="bottom" decoration-info
+                                    ="pay_state==True"
+                                  decoration-danger="pay_state==False">
+                                <field name="membership_years" readonly="1"/>
+                                <field name="pay_state" readonly="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="دفع الاستشاري" attrs="{'invisible':[('consultant','=',False)]}">
+                        <field name="consultant_ids" widget="section_and_note_one2many" mode="tree">
+                            <tree editable="bottom" decoration-info
+                                    ="pay_state==True"
+                                  decoration-danger="pay_state==False">
+                                <field name="consultant_years" readonly="1"/>
+                                <field name="pay_state" readonly="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+
+
+        </record>
+
+
+        <menuitem id="contacts.res_partner_menu_contacts"
+                  name="الاعضاء"
+                  action="contacts.action_contacts"
+                  parent="contacts.menu_contacts"
+                  sequence="2"/>
+
+    </data>
+</odoo>

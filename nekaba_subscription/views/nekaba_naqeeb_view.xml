@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+        <record id="nekaba_naqeeb_action" model="ir.actions.act_window">
+            <field name="name">naqeeb</field>
+            <field name="res_model">nekaba.naqeeb</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="nekaba_naqeeb_tree_view" model="ir.ui.view">
+            <field name="name">nekaba naqeeb Tree View</field>
+            <field name="model">nekaba.naqeeb</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+         </record>
+        <record id="nekaba_naqeeb_form_view" model="ir.ui.view">
+            <field name="name">nekaba naqeeb form view</field>
+            <field name="model">nekaba.naqeeb</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group >
+                        <field name="name"/>
+
+
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="naqeeb_menu"
+                  name="النقيب"
+                  parent="contacts.res_partner_menu_config"
+                  action="nekaba_naqeeb_action"
+                  sequence="3"/>
+    </data>
+</odoo>

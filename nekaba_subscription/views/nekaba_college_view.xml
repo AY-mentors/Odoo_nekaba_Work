@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <record id="nekaba_college_action" model="ir.actions.act_window">
+            <field name="name">college</field>
+            <field name="res_model">nekaba.college</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="nekaba_college_tree_view" model="ir.ui.view">
+            <field name="name">nekaba college Tree View</field>
+            <field name="model">nekaba.college</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="name_id"/>
+                </tree>
+            </field>
+         </record>
+        <record id="nekaba_college_form_view" model="ir.ui.view">
+            <field name="name">nekaba college form view</field>
+            <field name="model">nekaba.college</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="name_id"/>
+
+
+
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="college_menu"
+                  name="كلية"
+                  parent="contacts.res_partner_menu_config"
+                  action="nekaba_college_action"
+                  sequence="3"/>
+    </data>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="count_report_wizard_form" model="ir.ui.view">
+        <field name="name">Count Report wizard</field>
+        <field name="model">count.report.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="count Report">
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                    </group>
+                    <group>
+                        <field name="end_date"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="department_ids" widget="many2many_tags"/>
+                </group>
+                <group>
+                    <field name="university_ids" widget="many2many_tags"/>
+                </group>
+                <group>
+                    <field name="state_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button name="check_report" string="Print" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_count_report_wizard" model="ir.actions.act_window">
+        <field name="name">count Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">count.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="count_report_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem action="action_count_report_wizard"
+              id="menu_count_report_wizard"
+              name="تقارير احصائية"
+              parent="contacts.menu_contacts" sequence="3"/>
+</odoo>

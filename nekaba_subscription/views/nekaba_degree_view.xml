@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+        <record id="nekaba_degree_action" model="ir.actions.act_window">
+            <field name="name">degree</field>
+            <field name="res_model">nekaba.degree</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="nekaba_degree_tree_view" model="ir.ui.view">
+            <field name="name">nekaba degree Tree View</field>
+            <field name="model">nekaba.degree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+         </record>
+        <record id="nekaba_degree_form_view" model="ir.ui.view">
+            <field name="name">nekaba degree form view</field>
+            <field name="model">nekaba.degree</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group >
+                        <field name="name"/>
+
+
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="degree_menu"
+                  name="المؤهل"
+                  parent="contacts.res_partner_menu_config"
+                  action="nekaba_degree_action"
+                  sequence="3"/>
+    </data>
+</odoo>

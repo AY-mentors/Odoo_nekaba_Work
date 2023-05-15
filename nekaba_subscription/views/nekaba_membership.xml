@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="nekaba_membership_tree_view" model="ir.ui.view">
+            <field name="name">nekaba membership tree view</field>
+            <field name="model">nekaba.membership</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="membership_years"/>
+                    <field name="pay_state"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

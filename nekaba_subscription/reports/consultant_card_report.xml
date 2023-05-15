@@ -1,0 +1,43 @@
+<odoo>
+
+
+    <record id="paperformat_id_card_qweb_report" model="report.paperformat">
+        <field name="name">card</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">106</field>
+        <field name="page_width">65</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">10</field>
+        <field name="dpi">90</field>
+    </record>
+
+<!--    <report-->
+<!--            id="nekaba_card_report"-->
+<!--            string="card Report"-->
+<!--            model="res.partner"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="nekaba_subscription.nekaba_card_template"-->
+<!--            file="nekaba_subscription.nekaba_card_template"-->
+<!--            paperformat_id="nekaba_subscription.paperformat_id_card_qweb_report"-->
+
+<!--    />-->
+
+
+    <record id="action_consultant_card_report" model="ir.actions.report">
+        <field name="name">Consultant card Report</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nekaba_subscription.consultant_card_template</field>
+        <field name="report_file">nekaba_subscription.consultant_card_template</field>
+        <field name="binding_model_id" ref="model_res_partner"/>
+        <field name="paperformat_id" ref="nekaba_subscription.paperformat_id_card_qweb_report"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

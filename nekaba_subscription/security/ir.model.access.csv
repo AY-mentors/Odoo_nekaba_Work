@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+nekaba_membership_user,nekaba_membership_user,model_nekaba_membership,,1,1,1,1
+nekaba_college_user,nekaba_college_user,model_nekaba_college,,1,1,1,1
+nekaba_university_user,nekaba_university_user,model_nekaba_university,,1,1,1,1
+nekaba_degree_user,nekaba_degree_user,model_nekaba_degree,,1,1,1,1
+nekaba_consultant_user,nekaba_consultant_user,model_nekaba_consultant,,1,1,1,1
+nekaba_naqeeb,nekaba_naqeeb,model_nekaba_naqeeb,,1,1,1,1
+count_report_wizard_user,count_report_wizard_user,model_count_report_wizard,,1,1,1,1
+
+

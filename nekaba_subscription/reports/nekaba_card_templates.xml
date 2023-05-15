@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="internal_layout" inherit_id="web.internal_layout">
+            <xpath expr="//div[@class='header']" position="replace">
+                <!-- Add your fields or attributes here -->
+            </xpath>
+        </template>
+
+
+        <template id="nekaba_card_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <div class="row">
+                                <div class="col-8" style="border-right: 5px solid black;">
+                                    <p class="text-right">
+                                        جمهورية مصر العربية
+                                    </p>
+                                    <p class="text-right" style="margin-top:-15px">
+                                        Arabic Republic of Egypt
+                                    </p>
+
+                                </div>
+                                <div class="col-4">
+                                    <span t-field="res_company.logo"
+                                          t-options="{'widget': 'image','style':'width: 150px;height: 50px'}"/>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-4" style="margin-top:-1px">
+                                    <span t-field="o.image_1920" t-options="{'widget': 'image','style':'width: 100px;height: 150px'}"/><br/>
+                                    <span t-field="o.expiration_date"/><br/>
+                                    <span class="ml-5">النقيب</span><br/>
+                                    <span t-field="o.naqeeb_id" style="margin-top:-25px"/><br/>
+                                </div>
+                                <div class="col-8" dir="rtl">
+                                    <p class="text-right">المصمم:
+                                        <span t-field="o.name"/>
+                                    </p>
+                                    <p class="text-right" style="margin-top:-20px">المجال:
+<!--                                        <span t-field="o.college_id"/>-->
+                                        <span>تصميم صناعي</span>
+                                    </p>
+                                    <p class="text-right" style="margin-top:-20px">الشعبة:
+                                        <span t-field="o.department.name"/>
+                                    </p>
+                                    <p class="text-right" style="margin-top:-20px">التخصص:
+                                        <span t-field="o.department1.name"/>
+                                    </p >
+                                    <p class="text-right" style="margin-top:-20px">الوظيفة:
+                                        <span t-field="o.function"/>
+                                    </p>
+                                    <p class="text-right" style="margin-top:-20px">الرقم القومي:
+                                        <span t-field="o.member_id"/>
+                                    </p>
+                                    <p class="text-right" style="margin-top:-20px">رقم العضوية:
+                                        <span t-field="o.membership_num"/>
+                                    </p>
+
+
+                                </div>
+
+
+                            </div>
+                            <div class="row " style="margin-top:-10px">
+                               <div class="col-12 text-center">
+                                    <span  t-field="o.carnet_date" t-options='{"format": "MM/yyyy"}'/>
+                               </div>
+                            </div>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

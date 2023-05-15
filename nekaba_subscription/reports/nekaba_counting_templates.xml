@@ -1,0 +1,118 @@
+<odoo>
+    <data>
+        <template id="nekaba_counting_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <center>
+                            <b>
+                                <span t-esc="start_date"/>
+                                To
+                                <span t-esc="end_date"/>
+                            </b>
+                        </center>
+
+                        <center>
+                            <t t-if="departments">
+                                <b>التخصص:</b>
+                                <span t-esc="departments"/>
+                            </t>
+                        </center>
+                        <center>
+                            <t t-if="universitys">
+                                <b>الجامعة:</b>
+                                <span t-esc="universitys"/>
+                            </t>
+                        </center>
+                        <center>
+                            <t t-if="states">
+                                <b>المحافظة:</b>
+                                <span t-esc="states"/>
+                            </t>
+                        </center>
+                        <table class="table table-bordered">
+
+                            <thead>
+                                <tr>
+
+                                    <th>تاريخ الاشتراك</th>
+                                    <th>التخصص</th>
+                                    <th>الجامعة</th>
+                                    <th>المحافظة</th>
+                                    <th>الاسم</th>
+                                    <th>رقم العضوية</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <t t-foreach="partners" t-as="partner">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="partner.join_date"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="partner.department1.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="partner.university_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="partner.state_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="partner.name"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-esc="partner.membership_num"/>
+                                        </td>
+
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <t t-foreach="dep_dict" t-as="dep">
+                                <div class="text-right">
+                                    <t t-if="dep_dict">
+                                        <b class="text-right">اجمالي تخصص
+                                            <span t-esc="dep"/>
+                                        </b>
+                                        <b class="text-right">
+                                            <span t-esc="dep_value"/>
+                                        </b>
+                                    </t>
+                                </div>
+                        </t>
+                         <t t-foreach="univ_dict" t-as="univ">
+                                <div class="text-right">
+                                    <t t-if="univ_dict">
+                                        <b class="text-right">اجمالي جامعة
+                                            <span t-esc="univ"/>
+                                        </b>
+                                        <b class="text-right">
+                                            <span t-esc="univ_value"/>
+                                        </b>
+                                    </t>
+                                </div>
+                        </t>
+                        <t t-foreach="state_dict" t-as="state">
+                                <div class="text-right">
+                                    <t t-if="state_dict">
+                                        <b class="text-right">اجمالي محافظة
+                                            <span t-esc="state"/>
+                                        </b>
+                                        <b class="text-right">
+                                            <span t-esc="state_value"/>
+                                        </b>
+                                    </t>
+                                </div>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>
